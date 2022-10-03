@@ -1,34 +1,3 @@
-#"Realiser par Ali Basma
-#Important : Je n'ai pas les bon resultats lorsque je met 127.0.0.1 comme adresse ip je ne sais pas pourquoi alors que pour tous le reste des adresse ip marche
-# Ce script scanne les port d'une machine cibler
-#
-# 2 type protocoles peuvent etre utiliser : TCP et UDP
-# Donc on utilisant c'est protocoles nous souhaitons savoir si les ports sont ouvert ou fermer
-#
-# TCP et UDP fonctionnerons de 2 maniere differente :
-# 1)TCP lui enverra un TCP Syn à la machine cible si celle ci lui renvoie un SYN-ACK c'est que le port est ouvert, il suffira juste de renvoyer un RST pour annuler le Handshake,
-# dans le cas ou la cible lui renvoi un RST ACK c'est que le port est fermer
-#
-# 2)UDP fonctionne d'une differente facon, on envoie une requete au port de la machine cible avec UDP, si la machine repond avec un ICMP() c'est que le port est fermer, sinon sil ne repond pas cest que le port est ouvert,
-# nous pouvons utiliser une autre technique par exemple pour le port DNS envoyer une requete DNS pour forcer la machine cible à repondre si celle ci ne repond pas c'est que le port est fermer .
-#NB: Patienter pour les resultats de udp, le temps d'attente ici est plus long car nous renvoyons les paquets plusieurs fois dut à la perte de paquet
-#
-# Le script prendra 4 parametre :
-# 1) Le protocole(tcp est choisis par default) : --protocole [udp ou tcp]
-# 2) L'adresse IP: --ip [xxx.xxx.xxx.xxx]
-# 3) Le port (l'intervalle (0-1026) est choisis par default") : --port [x ou x-y pour un intervalle]
-# 4) Afficher tous les ports ou juste les ports ouverts (juste les ports ouverts sont selectionnés par default) : --verbeux
-# 5) Afficher la raison de l'etat des ports (par default les raisons ne sont pas afficher) : --reason
-#
-# Exemple de commande :
-# python main.py --protocole udp --ip 192.168.140.129 --port 0-10 --verbeux
-# python main.py --protocole udp --ip 192.168.140.129 --port 53
-# python main.py --ip 192.168.140.129 --port 50-53 --verbeux#
-# python main.py --ip 192.168.140.129 --port 20-25 --verbeux --reason#
-
-
-
-
 
 import socket
 import scapy.all as scapy
